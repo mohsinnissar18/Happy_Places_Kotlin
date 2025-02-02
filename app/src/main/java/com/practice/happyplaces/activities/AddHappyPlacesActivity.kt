@@ -132,6 +132,7 @@ class AddHappyPlacesActivity : AppCompatActivity(), View.OnClickListener {
                     }
                     else -> {
                         //Assigning all the values to data model class
+
                         val happyPLaceModel = HappyPlacesModel(
                             0,
                             binding?.etTitle?.text.toString(),
@@ -239,7 +240,7 @@ class AddHappyPlacesActivity : AppCompatActivity(), View.OnClickListener {
 
                     val selectedImageBitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
                     saveImageToInternalStorage = saveImageToInternalStorage(selectedImageBitmap)
-                    Log.e("Saved Image :" ,"Path :: $saveImageToInternalStorage")
+                    Log.e("Saved Image On activity result :" ,"Path :: ${saveImageToInternalStorage}")
                     binding?.ivPlaceImage!!.setImageBitmap(selectedImageBitmap)
 
                 }catch (e : IOException){

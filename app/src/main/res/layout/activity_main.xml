@@ -10,8 +10,10 @@
         android:id="@+id/rv_happy_places_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:padding="5dp"
         android:visibility="gone"
-        tools:visibility="gone" />
+        tools:visibility="visible" />
 
     <!--This text view we will make it visible when the list size is 0 means no data available to display in list.-->
     <TextView

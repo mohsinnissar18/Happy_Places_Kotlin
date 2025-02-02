@@ -53,7 +53,7 @@ class DatabaseHandler (context : Context) : SQLiteOpenHelper(context, DATABASE_N
         val contentValues = ContentValues()
 
         contentValues.put(KEY_TITLE, happyPlace.title)
-        contentValues.put(KEY_IMAGE, happyPlace.title)
+        contentValues.put(KEY_IMAGE, happyPlace.image)
         contentValues.put(KEY_DESCRIPTION, happyPlace.description)
         contentValues.put(KEY_DATE, happyPlace.date)
         contentValues.put(KEY_LOCATION, happyPlace.location)

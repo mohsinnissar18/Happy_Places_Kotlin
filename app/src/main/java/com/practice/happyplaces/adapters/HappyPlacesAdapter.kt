@@ -3,6 +3,7 @@ package com.practice.workoutapp
 import android.content.Context
 import android.graphics.Color
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -39,6 +40,7 @@ class HappyPlacesAdapter(
         val model = list[position]
 
         if (holder is ViewHolder) {
+            Log.e("ImageURI", model.image +"Hello")
             holder.ivPlaceImage.setImageURI(Uri.parse(model.image))
             holder.tvTitle.text = model.title
             holder.tvDescription.text = model.description
