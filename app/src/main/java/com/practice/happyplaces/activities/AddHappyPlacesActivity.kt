@@ -26,7 +26,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.practice.happyplaces.R
 import com.practice.happyplaces.database.DatabaseHandler
 import com.practice.happyplaces.databinding.ActivityAddHappyPlaceBinding
-import com.practice.happyplaces.models.HappyPlaceModel
+import com.practice.happyplaces.models.HappyPlacesModel
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -36,7 +36,7 @@ import java.util.Calendar
 import java.util.Locale
 import java.util.UUID
 
-class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
+class AddHappyPlacesActivity : AppCompatActivity(), View.OnClickListener {
 
     private var cal  = Calendar.getInstance()
     private lateinit var dateSetListener : DatePickerDialog.OnDateSetListener
@@ -87,7 +87,7 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.et_date -> {
                 DatePickerDialog(
-                    this@AddHappyPlaceActivity, dateSetListener,
+                    this@AddHappyPlacesActivity, dateSetListener,
 
                     cal.get(Calendar.YEAR),
                     cal.get(Calendar.MONTH),
@@ -96,7 +96,7 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.tv_add_image ->{
 
-                val pictureDialog = AlertDialog.Builder(this@AddHappyPlaceActivity)
+                val pictureDialog = AlertDialog.Builder(this@AddHappyPlacesActivity)
                 pictureDialog.setTitle("Select Action")
 
                 val pictureDialogItems = arrayOf("Select photo from Gallery",
@@ -132,7 +132,7 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
                     }
                     else -> {
                         //Assigning all the values to data model class
-                        val happyPLaceModel = HappyPlaceModel(
+                        val happyPLaceModel = HappyPlacesModel(
                             0,
                             binding?.etTitle?.text.toString(),
                             saveImageToInternalStorage.toString(),
@@ -147,7 +147,7 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
                         val addHappyPlace = dbHandler.addHappyPlace(happyPLaceModel)
 
                         if (addHappyPlace > 0){
-                            Toast.makeText(this, "The Happy Place Details are inserted SUCCESSFULLY", Toast.LENGTH_SHORT).show()
+                            setResult(Activity.RESULT_OK)
                             finish()
                         }
 
@@ -244,7 +244,7 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
 
                 }catch (e : IOException){
                     e.printStackTrace()
-                    Toast.makeText(this@AddHappyPlaceActivity, "Failed", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AddHappyPlacesActivity, "Failed", Toast.LENGTH_SHORT).show()
                 }
             }
         }else if (requestCode == CAMERA && resultCode == Activity.RESULT_OK){

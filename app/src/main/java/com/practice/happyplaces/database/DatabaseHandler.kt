@@ -6,7 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
-import com.practice.happyplaces.models.HappyPlaceModel
+import com.practice.happyplaces.models.HappyPlacesModel
 
 class DatabaseHandler (context : Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION){
     companion object{
@@ -47,7 +47,7 @@ class DatabaseHandler (context : Context) : SQLiteOpenHelper(context, DATABASE_N
         onCreate(db)
 
     }
-    fun addHappyPlace (happyPlace : HappyPlaceModel) : Long{
+    fun addHappyPlace (happyPlace : HappyPlacesModel) : Long{
 
         val db = this.writableDatabase
         val contentValues = ContentValues()
@@ -66,9 +66,9 @@ class DatabaseHandler (context : Context) : SQLiteOpenHelper(context, DATABASE_N
         db.close()
         return result
     }
-    fun getHappyPlacesList(): ArrayList<HappyPlaceModel> {
+    fun getHappyPlacesList(): ArrayList<HappyPlacesModel> {
 
-        val happyPlacesList : ArrayList <HappyPlaceModel>  = ArrayList()
+        val happyPlacesList : ArrayList <HappyPlacesModel>  = ArrayList()
         val selectQuery = "SELECT  * FROM $TABLE_HAPPY_PLACE"
         val db = this.readableDatabase
 
@@ -77,7 +77,7 @@ class DatabaseHandler (context : Context) : SQLiteOpenHelper(context, DATABASE_N
 
             if (cursor.moveToFirst()){
                 do {
-                    val place = HappyPlaceModel(
+                    val place = HappyPlacesModel(
                         cursor.getInt(cursor.getColumnIndexOrThrow(KEY_ID)),
                         cursor.getString(cursor.getColumnIndexOrThrow(KEY_TITLE)),
                         cursor.getString(cursor.getColumnIndexOrThrow(KEY_IMAGE)),

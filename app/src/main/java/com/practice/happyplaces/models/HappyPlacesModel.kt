@@ -1,6 +1,6 @@
 package com.practice.happyplaces.models
 
-data class HappyPlaceModel(
+data class HappyPlacesModel(
 
     val id : Int,
     val title : String,
